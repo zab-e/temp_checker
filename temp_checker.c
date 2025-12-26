@@ -15,6 +15,7 @@ void run_code()
 {
     double temp, result;
     char unit;
+    char again;
 
     printf("Choose unit (F,C):\n");
     scanf(" %c", &unit);
@@ -25,7 +26,7 @@ void run_code()
         scanf("%lf", &temp);
 
         result = convert_to_celsius(temp);
-        printf("Result: %.2lfC\n", result);
+        printf("Result: %.2lf C\n", result);
     }
     else if (unit == 'C' || unit == 'c')
     {
@@ -33,11 +34,23 @@ void run_code()
         scanf("%lf", &temp);
 
         result = convert_to_fahrenheit(temp);
-        printf("Result: %.2lfF\n", result);
+        printf("Result: %.2lf F\n", result);
     }
     else
     {
         printf("Invalid unit!\n");
+    }
+
+    printf("Do you want to continue (y/n)?:\n");
+    scanf(" %c", &again);
+
+    if (again == 'y' || again == 'Y')
+    {
+        run_code();
+    }
+    else if (again == 'n' || again == 'N')
+    {
+        return;
     }
 }
 
@@ -46,6 +59,5 @@ int main()
     run_code();
 
     system("pause");
-
     return 0;
 }
